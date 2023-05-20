@@ -23,6 +23,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     selectedDate = selectedDates[0];
+    console.log(selectedDates[0]);
 
     onDatePicker(selectedDate);
   },
@@ -35,7 +36,7 @@ function onDatePicker(selectedDate) {
   const currentDate = Date.now();
   if (dateToStart < currentDate) {
     Report.failure(
-      'Please choose a date in the future',
+      'Please choose a date in the future ',
       'The past is a place to learn from, not to live in',
       ' Okay'
     );
@@ -48,7 +49,7 @@ function onDatePicker(selectedDate) {
 function onStartCountDifference() {
   const timerId = setInterval(() => {
     onDatePicker(selectedDate);
-    dateFromCount = Date.now();
+    dateFromCount = Date.now(dateFromCount);
 
     const timeDifference = Date.parse(selectedDate) - dateFromCount;
 
@@ -58,7 +59,7 @@ function onStartCountDifference() {
     }
 
     const { days, hours, minutes, seconds } = convertMs(timeDifference);
-    //console.log({ days, hours, minutes, seconds });
+    // console.log({ days, hours, minutes, seconds });
     daysOfTimer.textContent = days;
     hoursOfTimer.textContent = hours;
     minutesOfTimer.textContent = minutes;
