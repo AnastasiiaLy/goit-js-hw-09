@@ -4,6 +4,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+const inputEl = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('button[data-start]');
 
 const daysOfTimer = document.querySelector('.value[data-days]');
@@ -13,6 +14,7 @@ const secondsOfTimer = document.querySelector('.value[data-seconds]');
 
 startBtn.addEventListener('click', onStartCountDifference);
 startBtn.disabled = true;
+inputEl.disabled = false;
 
 let selectedDate;
 let dateFromCount;
@@ -56,6 +58,8 @@ function onStartCountDifference() {
       clearInterval(timerId);
       return;
     }
+
+    inputEl.disabled = true;
 
     const { days, hours, minutes, seconds } = convertMs(timeDifference);
     // console.log({ days, hours, minutes, seconds });
