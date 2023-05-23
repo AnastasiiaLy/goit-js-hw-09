@@ -2,6 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const startBtn = document.querySelector('button[data-start]');
 
@@ -40,8 +41,6 @@ function onDatePicker(selectedDate) {
       'The past is a place to learn from, not to live in',
       ' Okay'
     );
-
-    return;
   }
   startBtn.disabled = false;
 }
